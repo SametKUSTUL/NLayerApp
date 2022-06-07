@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NLayer.Core.DTOs
 {
-    public class ProductDTOs:BaseDTO
+    public class ProductDTO:BaseDTO
     {
         public string Name { get; set; }
         public int Stock { get; set; }

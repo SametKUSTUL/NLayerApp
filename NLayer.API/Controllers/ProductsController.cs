@@ -12,10 +12,18 @@ namespace NLayer.API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
-        public ProductsController(IService<Product> service, IMapper mapper)
+        private readonly IProductService _productService;
+        public ProductsController(IService<Product> service, IMapper mapper, Core.Services.IProductService productService)
         {
             _service = service;
             _mapper = mapper;
+            _productService = productService;
+        }
+
+        [HttpGet("[action]")] //  otomatik olarak methodun adını alır.
+        public async Task<IActionResult> GetProductWithCategory()
+        {
+            return CreateActionResult(await _productService.GetProductWithCategory());
         }
 
         [HttpGet]
